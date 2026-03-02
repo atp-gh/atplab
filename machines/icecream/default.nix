@@ -16,6 +16,7 @@ in {
 
   boot.loader.limine.biosDevice = primary-disk;
   disko.devices.disk.main.device = primary-disk;
+  disko.devices.disk.zssd1.device = import values/disko-zssd1-device.nix;
   system.stateVersion = "26.05";
   networking.hostId = "2896c4e1";
   boot.kernelParams = ["zfs.zfs_arc_max=4294967296"]; # Zfs arc is a beast, it would eat out all memory if you don't set limit!

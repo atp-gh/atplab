@@ -33,12 +33,47 @@ _: {
           type = "gpt";
         };
       };
+      zssd1 = {
+        type = "disk";
+        content = {
+          partitions = {
+            zfs = {
+              content = {
+                pool = "zdata1";
+                type = "zfs";
+              };
+              size = "100%";
+            };
+          };
+          type = "gpt";
+        };
+      };
     };
     zpool = {
       zroot = {
         datasets = {
           "root" = {
             mountpoint = "/";
+            options = {
+              "com.sun:auto-snapshot" = "false";
+            };
+            type = "zfs_fs";
+          };
+        };
+        options.ashift = "12";
+        rootFsOptions = {
+          acltype = "posixacl";
+          atime = "off";
+          compression = "zstd";
+          mountpoint = "none";
+          xattr = "sa";
+        };
+        type = "zpool";
+      };
+      zdata1 = {
+        datasets = {
+          "root" = {
+            mountpoint = "/data1";
             options = {
               "com.sun:auto-snapshot" = "false";
             };
