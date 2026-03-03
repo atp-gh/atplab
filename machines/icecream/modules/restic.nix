@@ -72,6 +72,11 @@ in {
         remote2 = {
           repositoryFile = config.sops.secrets."${hostname}-restic-remote2-repo".path;
           timerConfig.OnCalendar = "21:00:00";
+          paths =
+            common.paths
+            ++ [
+              "/var/lib/Sync"
+            ];
         };
       };
 
