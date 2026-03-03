@@ -166,6 +166,22 @@
           neighborLinkLocal = "fe80::2189:e9";
         };
       };
+      # Automatic Peering: https://peering.maraun.de/
+      as22225 = {
+        wg = {
+          listenPort = 22225;
+          publicKey = "uS1AYe7zTGAP48XeNn0vppNjg7q0hawyh8Y0bvvAWhk=";
+          endpoint = import ../values/dn42-peer-as22225.nix;
+          linkLocal = "fe80::9334/64";
+          remoteV4 = "172.20.12.196";
+        };
+        bgp = {
+          remoteAs = 4242422225;
+          enableV4 = false;
+          enableMpBGP = true;
+          neighborLinkLocal = "fe80::2225";
+        };
+      };
     };
   };
 }
