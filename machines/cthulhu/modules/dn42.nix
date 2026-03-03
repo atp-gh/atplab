@@ -198,6 +198,21 @@
           neighborLinkLocal = "fe80::2005";
         };
       };
+      # Automatic Peering: https://datenfass.com/autopeering.html
+      as22884 = {
+        wg = {
+          listenPort = 22884;
+          publicKey = "41JQySl2SALrY0+BmF/c45WT8egnM5QXa26aoiFzSRM=";
+          endpoint = import ../values/dn42-peer-as22884.nix;
+          linkLocal = "fe80::9334/64";
+        };
+        bgp = {
+          remoteAs = 4242422884;
+          enableV4 = false;
+          enableMpBGP = true;
+          neighborLinkLocal = "fe80::2884";
+        };
+      };
     };
   };
 }
