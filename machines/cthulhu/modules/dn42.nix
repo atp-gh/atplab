@@ -243,6 +243,21 @@
           neighborLinkLocal = "fe80::3088:194";
         };
       };
+      # Automatic Peering: https://peer.dn42.6700.cc
+      as23914 = {
+        wg = {
+          listenPort = 23914;
+          publicKey = "B1xSG/XTJRLd+GrWDsB06BqnIq8Xud93YVh/LYYYtUY=";
+          endpoint = import ../values/dn42-peer-as23914.nix;
+          linkLocal = "fe80::9334/64";
+        };
+        bgp = {
+          remoteAs = 4242423914;
+          enableV4 = false;
+          enableMpBGP = true;
+          neighborLinkLocal = "fe80::ade0";
+        };
+      };
     };
   };
 }
