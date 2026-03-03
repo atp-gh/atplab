@@ -182,6 +182,22 @@
           neighborLinkLocal = "fe80::2225";
         };
       };
+      # Automatic Peering: https://pudunet.net/
+      as22227 = {
+        wg = {
+          listenPort = 22227;
+          publicKey = "V6gBK64MAL+BacO14xAaG/Z2l5tXmPWbWNj0Q8yCP0Q=";
+          endpoint = import ../values/dn42-peer-as22227.nix;
+          linkLocal = "fe80::9334/64";
+          remoteV4 = "172.20.47.229";
+        };
+        bgp = {
+          remoteAs = 4242422227;
+          enableV4 = false;
+          enableMpBGP = true;
+          neighborLinkLocal = "fe80::2005";
+        };
+      };
     };
   };
 }
