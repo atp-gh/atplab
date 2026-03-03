@@ -69,6 +69,15 @@ in {
 
         ns1 IN A     172.20.192.3
         ns1 IN AAAA  fd25:5547:5a89::3
+
+        ; Custom dns
+        octopus IN A 172.20.192.1
+        octopus IN AAAA fd25:5547:5a89::1
+        squid IN A 172.20.192.2
+        squid IN AAAA fd25:5547:5a89::2
+        cthulhu IN A 172.20.192.3
+        cthulhu IN AAAA fd25:5547:5a89::3
+        test IN  A 172.20.192.3
       '';
     };
     "knot/dn42/dn42.v4.rev.zone" = {
