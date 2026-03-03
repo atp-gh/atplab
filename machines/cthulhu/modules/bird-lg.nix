@@ -11,11 +11,11 @@ in {
         enable = true;
         listenAddresses = "127.0.0.1:15000";
         proxyPort = 18000;
-        domain = "";
+        domain = "atp.dn42";
         servers = [
-          "${hostname}<127.0.0.1>"
-          "octopus<172.20.192.1>"
-          "squid<172.20.192.2>"
+          "${hostname}"
+          "octopus"
+          "squid"
         ];
         netSpecificMode = "dn42";
         protocolFilter = ["bgp" "rpki"];
@@ -23,7 +23,7 @@ in {
       };
       proxy = {
         enable = true;
-        listenAddresses = "127.0.0.1:${toString cfg.frontend.proxyPort}";
+        listenAddresses = "172.20.192.3:${toString cfg.frontend.proxyPort}";
       };
     };
     nginx.virtualHosts."lg.0pt.dpdns.org" = {
