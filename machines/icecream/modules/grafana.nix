@@ -17,6 +17,7 @@ in
             enable_gzip = true;
             domain = "grafana.0pt.lab";
           };
+          security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
           database = {
             type = "postgres";
             host = "/run/postgresql";

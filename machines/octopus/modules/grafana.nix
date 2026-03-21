@@ -12,6 +12,7 @@ in {
           enable_gzip = true;
           domain = "grafana.0pt.dpdns.org";
         };
+        security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
       };
     };
     nginx.virtualHosts."${cfg.settings.server.domain}" = {

@@ -10,6 +10,7 @@ _: {
           enable_gzip = true;
           domain = "monitor.example.com";
         };
+        security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
       };
     };
   };

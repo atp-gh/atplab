@@ -7,18 +7,22 @@
 in {
   services = {
     kanidm = {
-      package = pkgs.kanidm_1_8.withSecretProvisioning;
-      enableServer = true;
-      serverSettings = {
-        bindaddress = "127.0.0.1:8000";
-        domain = "kanidm.example.com";
-        origin = "https://${cfg.serverSettings.domain}";
-        # Kandim must use tls
-        tls_chain = "/etc/nginx/self-sign.crt";
-        tls_key = "/etc/nginx/self-sign.key";
+      package = pkgs.kanidm_1_9.withSecretProvisioning;
+      server = {
+        enable = true;
+        settings = {
+          bindaddress = "127.0.0.1:8000";
+          domain = "kanidm.example.com";
+          origin = "https://${cfg.serverSettings.domain}";
+          # Kandim must use tls
+          tls_chain = "/etc/nginx/self-sign.crt";
+          tls_key = "/etc/nginx/self-sign.key";
+        };
       };
-      enableClient = true;
-      clientSettings.uri = "https://${cfg.serverSettings.domain}";
+      client = {
+        enable = true;
+        settings.uri = "https://${cfg.serverSettings.domain}";
+      };
       provision = {
         enable = true;
         adminPasswordFile = /run/adminPasswordFile;
