@@ -11,8 +11,8 @@ in {
   sops.secrets = let
     secretNames = [
       "restic-passwd"
-      "restic-remote1-env"
-      "restic-remote1-repo"
+      # "restic-remote1-env"
+      # "restic-remote1-repo"
       "restic-remote2-repo"
     ];
   in
@@ -64,11 +64,11 @@ in {
       };
 
       remotes = {
-        remote1 = {
-          repositoryFile = config.sops.secrets."${hostname}-restic-remote1-repo".path;
-          environmentFile = config.sops.secrets."${hostname}-restic-remote1-env".path;
-          timerConfig.OnCalendar = "22:26:00";
-        };
+        # remote1 = {
+        #   repositoryFile = config.sops.secrets."${hostname}-restic-remote1-repo".path;
+        #   environmentFile = config.sops.secrets."${hostname}-restic-remote1-env".path;
+        #   timerConfig.OnCalendar = "22:26:00";
+        # };
         remote2 = {
           repositoryFile = config.sops.secrets."${hostname}-restic-remote2-repo".path;
           timerConfig.OnCalendar = "21:00:00";
