@@ -10,6 +10,8 @@ in {
       ./network.nix
       ./user.nix
 
+      ./values/public-key-old.nix
+
       ../../modules/services/zfs.nix
     ]
     ++ ls ./modules
