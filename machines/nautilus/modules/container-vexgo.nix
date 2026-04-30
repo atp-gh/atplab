@@ -6,7 +6,7 @@
   };
   virtualisation.oci-containers.containers."vexgo" = {
     pull = "newer";
-    image = "ghcr.io/weimm16/vexgo:latest";
+    image = "ghcr.io/vexgo-org/vexgo:latest";
     environmentFiles = [config.sops.secrets.nautilus-vexgo-env.path];
     volumes = [
       "vexgo:/app/data:rw"

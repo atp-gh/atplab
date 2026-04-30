@@ -40,8 +40,8 @@ _: {
           }
         ];
       };
-      dockerCompat = true;
-      dockerSocket.enable = true;
+      dockerCompat = false;
+      dockerSocket.enable = false;
     };
   };
 }
