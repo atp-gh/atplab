@@ -1,4 +1,4 @@
-{config, ...}: {
+{config,lib, ...}: lib.mkIf false{
   sops.secrets.squid-ryot-env = {
     mode = "0400";
     format = "binary";
