@@ -6,10 +6,10 @@
 }:
 stdenvNoCC.mkDerivation {
   pname = "vigil-agent";
-  version = "2.1.0";
+  version = "3.3.1";
   src = fetchurl {
-    url = "https://github.com/pineappledr/vigil/releases/download/v2.1.0/vigil-agent-linux-amd64";
-    sha256 = "sha256-hzSJzZ7UgLmPeRjKoOn8Ixsi3CdqBaNh+HCjJiPea4Y=";
+    url = "https://github.com/pineappledr/vigil/releases/download/v3.3.1/vigil-agent-linux-amd64";
+    sha256 = "sha256-2b82p8eFR2D8W9pfaYtTRdd2CLl8FlsMvrok3ytetUk=";
   };
   dontUnpack = true;
   installPhase = ''
