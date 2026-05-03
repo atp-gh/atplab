@@ -58,14 +58,6 @@ _: {
         url = "https://miniflux.0pt.dpdns.org";
       }
       {
-        name = "minio";
-        url = "https://minio.0pt.dpdns.org";
-      }
-      {
-        name = "minio-ui";
-        url = "https://minio-ui.0pt.dpdns.org";
-      }
-      {
         name = "openlist";
         url = "https://openlist.0pt.dpdns.org";
       }

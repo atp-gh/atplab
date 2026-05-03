@@ -73,10 +73,6 @@ _: {
         name = "rustpad";
         url = "https://rustpad.0pt.dpdns.org";
       }
-      {
-        name = "ryot";
-        url = "https://ryot.0pt.dpdns.org";
-      }
     ];
     toEndpoint = svc:
       svc

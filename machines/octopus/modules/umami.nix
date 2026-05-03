@@ -19,7 +19,7 @@ in {
         HOSTNAME = "127.0.0.1";
         PORT = 3002;
         DISABLE_TELEMETRY = true;
-        REDIS_URL = "redis://${config.services.dragonflydb.bind}:${toString config.services.dragonflydb.port}";
+        # REDIS_URL = "redis://${config.services.dragonflydb.bind}:${toString config.services.dragonflydb.port}";
       };
     };
     nginx.virtualHosts."umami.0pt.dpdns.org" = {
