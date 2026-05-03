@@ -19,7 +19,7 @@ in {
 
     server = mkOption {
       type = types.str;
-      default = "http://localhost:9080";
+      default = "http://127.0.0.1:9080";
       description = "Vigil server URL.";
     };
 
@@ -100,14 +100,14 @@ in {
         ExecStart = concatStringsSep " " (
           [
             "${pkgs.vigil-agent}/bin/vigil-agent"
-            "--server ${cfg.server}"
-            "--interval ${toString cfg.interval}"
-            "--data-dir ${cfg.dataDir}"
+            "-server ${cfg.server}"
+            "-interval ${toString cfg.interval}"
+            "-data-dir ${cfg.dataDir}"
           ]
-          ++ lib.optional (cfg.hostname != null) "--hostname ${cfg.hostname}"
-          ++ lib.optional (cfg.listen != null) "--listen ${cfg.listen}"
-          ++ lib.optional cfg.register "--register"
-          ++ lib.optional (cfg.token != null) "--token ${cfg.token}"
+          ++ lib.optional (cfg.hostname != null) "-hostname ${cfg.hostname}"
+          ++ lib.optional (cfg.listen != null) "-listen ${cfg.listen}"
+          ++ lib.optional cfg.register "-register"
+          ++ lib.optional (cfg.token != null) "-token ${cfg.token}"
           ++ cfg.extraFlags
         );
 

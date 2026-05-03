@@ -1,15 +1,21 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.services.vigil-server;
 in {
+  environment.systemPackages = with pkgs; [zfs_2_4 nvme-cli];
   services = {
     vigil-server = {
       enable = true;
       port = 9080;
-      # environmentFile = /tmp/vigil;
-      auth.enable = true;
+      auth.enable = false;
     };
     vigil-agent = {
       enable = true;
+      # register = true;
+      # token = "f6b985c74eb5acaa97fc715026b3287a673984d5c939f4fe3d4390e79964981e";
       user = "root";
       group = "root";
     };
