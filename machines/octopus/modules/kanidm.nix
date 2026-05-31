@@ -20,6 +20,13 @@ in {
       format = "binary";
       sopsFile = ../secrets/kanidm-idmadmin;
     };
+    octopus-kanidm-srrm-bs = {
+      mode = "0400";
+      owner = "kanidm";
+      group = "kanidm";
+      format = "binary";
+      sopsFile = ../secrets/kanidm-srrm-bs;
+    };
   };
   services = {
     kanidm = {
@@ -53,6 +60,22 @@ in {
         groups = {
           testgp = {
             members = ["test"];
+          };
+        };
+        systems.oauth2.srrm = {
+          displayName = "srrm";
+          basicSecretFile = config.sops.secrets.octopus-kanidm-srrm-bs.path;
+          originUrl = "https://srrm.0pt.dpdns.org/api/auth/callback";
+          originLanding = "https://srrm.0pt.dpdns.org";
+          allowInsecureClientDisablePkce = true;
+          # enableLegacyCrypto = true;
+          preferShortUsername = true;
+          scopeMaps = {
+            testgp = [
+              "openid"
+              "email"
+              "profile"
+            ];
           };
         };
       };
