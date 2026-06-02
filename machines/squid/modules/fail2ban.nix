@@ -3,19 +3,17 @@
   pkgs,
   ...
 }: let
-  gft = import ../values/gotify-fail2ban-token.nix;
+  # gft = import ../values/gotify-fail2ban-token.nix;
 in {
-  environment.etc = {
-    # Define an action that will trigger a Ntfy push notification upon the issue of every new ban
-    "fail2ban/action.d/gotify.local".text = pkgs.lib.mkDefault (pkgs.lib.mkAfter ''
-      [Definition]
-      norestored = true
-
-      actionban = curl "https://gotify.0pt.dpdns.org/message?token=${gft}" -F "title=[Fail2Ban] <ip> banned" -F "message=<name> jail has banned <ip> on $(hostname) after <failures> failed attempts." -F "priority=3"
-
-      actionunban = curl "https://gotify.0pt.dpdns.org/message?token=${gft}" -F "title=[Fail2Ban] <ip> unbanned" -F "message=<name> jail has unbanned <ip> on $(hostname)." -F "priority=2"
-    '');
-  };
+  # environment.etc = {
+  #   # Define an action that will trigger a Ntfy push notification upon the issue of every new ban
+  #   "fail2ban/action.d/gotify.local".text = pkgs.lib.mkDefault (pkgs.lib.mkAfter ''
+  #     [Definition]
+  #     norestored = true
+  #     actionban = curl "https://gotify.0pt.dpdns.org/message?token=${gft}" -F "title=[Fail2Ban] <ip> banned" -F "message=<name> jail has banned <ip> on $(hostname) after <failures> failed attempts." -F "priority=3"
+  #     actionunban = curl "https://gotify.0pt.dpdns.org/message?token=${gft}" -F "title=[Fail2Ban] <ip> unbanned" -F "message=<name> jail has unbanned <ip> on $(hostname)." -F "priority=2"
+  #   '');
+  # };
   services = {
     openssh.settings = {
       LogLevel = "VERBOSE";
@@ -51,7 +49,8 @@ in {
             filter = "sshd";
             banaction = "nftables";
             backend = "systemd";
-            action = ''nftables-multiport[name=sshd, port="ssh", protocol=tcp] gotify'';
+            # action = ''nftables-multiport[name=sshd, port="ssh", protocol=tcp] gotify'';
+            action = ''nftables-multiport[name=sshd, port="ssh", protocol=tcp]'';
           };
         };
       };
