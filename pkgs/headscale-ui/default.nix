@@ -7,10 +7,10 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "headscale-ui";
-  version = "2025.08.23";
+  version = "2026.03.17";
   src = fetchurl {
-    url = "https://github.com/gurucomputing/headscale-ui/releases/download/2025.08.23/headscale-ui.zip";
-    sha256 = "sha256-1/LMHZoXe/rvQJNYt37QriBLMjEyv9aHi+teaxaenYI=";
+    url = "https://github.com/gurucomputing/headscale-ui/releases/download/2026.03.17/headscale-ui.zip";
+    sha256 = "sha256-6Vnd6DVpIzqGQ5F+XFj1lrQzcJVWuG+emYxynQGmyyk=";
   };
 
   nativeBuildInputs = [unzip];
