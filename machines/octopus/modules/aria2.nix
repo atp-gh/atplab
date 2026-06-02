@@ -39,7 +39,7 @@ in {
       kTLS = true;
       sslCertificate = "/etc/nginx/self-sign.crt";
       sslCertificateKey = "/etc/nginx/self-sign.key";
-      root = "${pkgs.ariang}/share/ariang";
+      # root = "${pkgs.ariang}/share/ariang";
       locations."/jsonrpc" = {
         proxyPass = "http://127.0.0.1:${toString cfg.settings.rpc-listen-port}";
         recommendedProxySettings = true;
@@ -49,7 +49,7 @@ in {
       };
     };
   };
-  environment.systemPackages = [
-    pkgs.ariang
-  ];
+  # environment.systemPackages = [
+  #   pkgs.ariang
+  # ];
 }
