@@ -1,12 +1,21 @@
 {config, ...}: let
   cfg = config.services.linkwarden;
 in {
-  sops.secrets.octopus-linkwarden-env = {
-    mode = "0400";
-    owner = cfg.user;
-    group = cfg.group;
-    format = "binary";
-    sopsFile = ../secrets/linkwarden-env;
+  sops.secrets = {
+    octopus-linkwarden-env = {
+      mode = "0400";
+      owner = cfg.user;
+      group = cfg.group;
+      format = "binary";
+      sopsFile = ../secrets/linkwarden-env;
+    };
+    octopus-meilisearch-key = {
+      mode = "0444";
+      owner = cfg.user;
+      group = cfg.user;
+      format = "binary";
+      sopsFile = ../secrets/meilisearch-key;
+    };
   };
   services = {
     linkwarden = {
@@ -16,6 +25,12 @@ in {
       host = "127.0.0.1";
       port = 3004;
       environmentFile = config.sops.secrets.octopus-linkwarden-env.path;
+    };
+    meilisearch = {
+      enable = true;
+      listenAddress = "127.0.0.1";
+      listenPort = 7700;
+      masterKeyFile = config.sops.secrets.octopus-meilisearch-key.path;
     };
     nginx.virtualHosts."linkwarden.0pt.dpdns.org" = {
       forceSSL = true;
