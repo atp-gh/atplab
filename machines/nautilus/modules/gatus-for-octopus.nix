@@ -50,6 +50,10 @@ _: {
         url = "https://lemmy.0pt.dpdns.org";
       }
       {
+        name = "linkwarden";
+        url = "https://linkwarden.0pt.dpdns.org";
+      }
+      {
         name = "microbin";
         url = "https://microbin.0pt.dpdns.org";
       }
