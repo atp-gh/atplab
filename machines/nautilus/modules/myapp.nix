@@ -1,6 +1,6 @@
 _: {
   virtualisation.oci-containers.containers."myapp" = {
-    image = "localhost/myapp:0.1";
+    image = "localhost/myapp:0.2";
     volumes = [
       "myapp:/data:rw"
     ];
