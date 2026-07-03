@@ -65,7 +65,7 @@ with lib; {
       };
     };
     kernelModules = ["tcp_bbr"];
-    kernelPackages = mkDefault pkgs.linuxPackages_zen;
+    # kernelPackages = mkDefault pkgs.linuxPackages_zen;
     kernelParams = [
       "audit=0"
       "console=tty1"
