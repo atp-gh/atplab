@@ -1,6 +1,9 @@
 {config, ...}: let
   cfg = config.services.karakeep;
 in {
+  nixpkgs.config.permittedInsecurePackages = [
+    "pnpm-9.15.9"
+  ];
   sops.secrets = {
     octopus-kanidm-karakeep-bs = {
       mode = "0444";
