@@ -6,10 +6,6 @@ _: {
         url = "https://archivebox.0pt.dpdns.org";
       }
       {
-        name = "atomic-server";
-        url = "https://atomic.0pt.dpdns.org";
-      }
-      {
         name = "chartdb";
         url = "https://chartdb.0pt.dpdns.org";
       }
