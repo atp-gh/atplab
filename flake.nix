@@ -15,6 +15,7 @@
     microvm.inputs.nixpkgs.follows = "nixpkgs";
 
     daeuniverse.url = "github:daeuniverse/flake.nix";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
   outputs = inputs: let
     hostname = "squid";
@@ -42,6 +43,7 @@
               ./machines/${hostname}
               disko.nixosModules.disko
               sops-nix.nixosModules.sops
+              hermes-agent.nixosModules.default
             ];
             specialArgs = {inherit inputs hostname;};
           };
