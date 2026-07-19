@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    cargo
+    go
+  ];
   services.hermes-agent = {
     enable = true;
     container.enable = false;
