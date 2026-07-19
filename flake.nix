@@ -17,7 +17,7 @@
     daeuniverse.url = "github:daeuniverse/flake.nix";
   };
   outputs = inputs: let
-    hostname = "ammonite";
+    hostname = "squid";
   in
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
@@ -29,6 +29,8 @@
             rage
             sops
             pre-commit
+            nixd
+            nixos-rebuild
           ];
         };
       };
