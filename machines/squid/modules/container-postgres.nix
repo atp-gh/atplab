@@ -9,7 +9,7 @@
     image = "postgres:18-alpine";
     environmentFiles = [config.sops.secrets.squid-postgres-env.path];
     volumes = [
-      "postgres:/var/lib/postgresql/data:rw"
+      "postgres:/var/lib/postgresql:rw"
     ];
     ports = [
       "127.0.0.1:5432:5432"
