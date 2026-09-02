@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
-lib.mkIf false {
+{config, ...}: {
   sops.secrets.nautilus-vexgo-env = {
     mode = "0400";
     format = "binary";
