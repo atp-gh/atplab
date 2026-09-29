@@ -6,7 +6,7 @@
   };
   virtualisation.oci-containers.containers."omniroute" = {
     pull = "newer";
-    image = "diegosouzapw/omniroute:latest";
+    image = "ghcr.io/diegosouzapw/omniroute:next";
     environmentFiles = [config.sops.secrets.squid-omniroute-env.path];
     volumes = [
       "omniroute:/app/data:rw"
