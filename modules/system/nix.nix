@@ -27,7 +27,7 @@ with lib; {
       gc-keep-derivations = false;
       keep-going = true;
       log-lines = 25;
-      nix-path = mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+      nix-path = mkForce ["nixpkgs=/etc/nix/inputs/nixpkgs"];
       substituters = [
         # "https://cache.garnix.io"
         "https://cache.nixos.org"
