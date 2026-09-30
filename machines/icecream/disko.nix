@@ -4,91 +4,64 @@ _: {
       main = {
         type = "disk";
         content = {
+          type = "gpt";
           partitions = {
             boot = {
-              attributes = [0];
               priority = 1;
               size = "1M";
               type = "EF02";
             };
             esp = {
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountOptions = ["umask=0077"];
-                mountpoint = "/boot";
-              };
               priority = 2;
               size = "256M";
               type = "EF00";
-            };
-            zfs = {
               content = {
-                pool = "zroot";
-                type = "zfs";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = ["umask=0077"];
               };
+            };
+            root = {
               size = "100%";
+              content = {
+                type = "filesystem";
+                format = "f2fs";
+                mountpoint = "/";
+                extraArgs = [
+                  "-O"
+                  "extra_attr,inode_checksum,sb_checksum,compression"
+                ];
+                mountOptions = [
+                  "compress_algorithm=zstd:6,compress_chksum,atgc,gc_merge,lazytime,nodiscard"
+                ];
+              };
             };
           };
-          type = "gpt";
         };
       };
-      zssd1 = {
+      ssd1 = {
         type = "disk";
         content = {
-          partitions = {
-            zfs = {
-              content = {
-                pool = "zdata1";
-                type = "zfs";
-              };
-              size = "100%";
-            };
-          };
           type = "gpt";
-        };
-      };
-    };
-    zpool = {
-      zroot = {
-        datasets = {
-          "root" = {
-            mountpoint = "/";
-            options = {
-              "com.sun:auto-snapshot" = "false";
+          partitions = {
+            root = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "f2fs";
+                mountpoint = "/ssd1";
+                extraArgs = [
+                  "-O"
+                  "extra_attr,inode_checksum,sb_checksum,compression"
+                ];
+                mountOptions = [
+                  "compress_algorithm=zstd:6,compress_chksum,atgc,gc_merge,lazytime,nodiscard"
+                ];
+              };
             };
-            type = "zfs_fs";
           };
         };
-        options.ashift = "12";
-        rootFsOptions = {
-          acltype = "posixacl";
-          atime = "off";
-          compression = "zstd";
-          mountpoint = "none";
-          xattr = "sa";
-        };
-        type = "zpool";
-      };
-      zdata1 = {
-        datasets = {
-          "root" = {
-            mountpoint = "/data1";
-            options = {
-              "com.sun:auto-snapshot" = "false";
-            };
-            type = "zfs_fs";
-          };
-        };
-        options.ashift = "12";
-        rootFsOptions = {
-          acltype = "posixacl";
-          atime = "off";
-          compression = "zstd";
-          mountpoint = "none";
-          xattr = "sa";
-        };
-        type = "zpool";
       };
     };
   };
